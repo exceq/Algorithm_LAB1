@@ -1,0 +1,13 @@
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\bin\Debug\netcoreapp3.1\algorithm_lab1.exe
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\bin\Debug\netcoreapp3.1\algorithm_lab1.deps.json
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\bin\Debug\netcoreapp3.1\algorithm_lab1.runtimeconfig.json
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\bin\Debug\netcoreapp3.1\algorithm_lab1.runtimeconfig.dev.json
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\bin\Debug\netcoreapp3.1\algorithm_lab1.dll
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\bin\Debug\netcoreapp3.1\algorithm_lab1.pdb
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.csprojAssemblyReference.cache
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.AssemblyInfoInputs.cache
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.AssemblyInfo.cs
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.csproj.CoreCompileInputs.cache
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.dll
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.pdb
+F:\Desktop\Popka\Visual Studio\algorithm_lab1\obj\Debug\netcoreapp3.1\algorithm_lab1.genruntimeconfig.cache
