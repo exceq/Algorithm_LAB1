@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net.WebSockets;
+using System.Runtime.InteropServices;
+using System.Security.Claims;
 
 namespace algorithm_lab1
 {
@@ -12,46 +15,72 @@ namespace algorithm_lab1
         {
             string path = @".\measures\";
 
-            var f1 = 1;
-            var f2 = 1;
-            for (int i = 1; i < 1000000; i = f1 + f2)
-            {
-                DoSmthAndMeasure(CreateArray(i), path, MyBubbleSort);
-                f1 = f2;
-                f2 = i;
-            }
+            //var f1 = 1;
+            //var f2 = 1;
+            //for (int i = 1; i < 1000000; i = f1 + f2)
+            //{
+            //    DoSmthAndMeasure(CreateArray(i), path, MyBubbleSort);
+            //    f1 = f2;
+            //    f2 = i;
+            //}
+            Console.WriteLine(DoSmthAndMeasure(CreateArray(500), path, MyBubbleSort));
+            Console.WriteLine(DoSmthAndMeasure(CreateArray(5000), path, MyBubbleSort));
+            Console.WriteLine(DoSmthAndMeasure(CreateArray(50000), path, MyBubbleSort));
         }
 
-        static void DoSmthAndMeasure<T>(T[] array, string path, Action<T[]> act)
+        static long DoSmthAndMeasure<T>(T[] array, string path, Action<T[]> act) where T : IComparable
         {
+            //Array.Sort(array);
+            //Array.Reverse(array);
             sw.Start();
             act(array);
             sw.Stop();
-            var time = sw.ElapsedTicks;
-            File.AppendAllText(path + act.Method.Name + ".csv", array.Length + ";" + time + ";\n");
+            var time = sw.ElapsedMilliseconds;
+            //File.AppendAllText(path + act.Method.Name + ".csv", array.Length + ";" + time + ";\n");
+            return time;
         }
 
-        static void DoSmthAndMeasure<T>(T[] array, string path, Func<T[], T> funk)
+        static long DoSmthAndMeasure<T>(T[] array, string path, Func<T[], T> funk) where T : IComparable
         {
+            
             sw.Start();
             funk(array);
             sw.Stop();
-            var time = sw.ElapsedTicks;
-            File.AppendAllText(path + funk.Method.Name + ".csv", array.Length + ";" + time + ";\n");
+            var time = sw.ElapsedMilliseconds;
+            //File.AppendAllText(path + funk.Method.Name + ".csv", array.Length + ";" + time + ";\n");
+            return time;
         }
 
         static void MyBubbleSort<T>(T[] array) where T : IComparable
         {
-            for (int i = 0; i < array.Length - 1; i++)
-                for (int j = 0; j < array.Length - 1; j++)
+            for (int i = 0; i < array.Length; i++)
+                for (int j = 0; j < array.Length - 1 - i; j++)
                 {
-                    if (array[i].CompareTo(array[i + 1]) < 0)
+                    if (array[j].CompareTo(array[j + 1]) > 0)
                     {
-                        var t = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = t;
+                        var t = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = t;
                     }
                 }
+        }
+
+        static void BubbleSortFromStackOverflow<T>(T[] array) where T : IComparable
+        {
+            var temp = default(T);
+
+            for (int write = 0; write < array.Length; write++)
+            {
+                for (int sort = 0; sort < array.Length - 1; sort++)
+                {
+                    if (array[sort].CompareTo(array[sort + 1]) > 0)
+                    {
+                        temp = array[sort + 1];
+                        array[sort + 1] = array[sort];
+                        array[sort] = temp;
+                    }
+                }
+            }
         }
 
         static T MyFindMax<T>(T[] array) where T : IComparable<T>
@@ -67,10 +96,10 @@ namespace algorithm_lab1
 
         static void MyReverse<T>(T[] array)
         {
-            var rev = new T[array.Length];
+            var rev = array;
             for (int i = 0; i < array.Length; i++)
             {
-                rev[i] = array[array.Length - 1 - i];
+                array[i] = rev[array.Length - 1 - i];
             }
         }
 
